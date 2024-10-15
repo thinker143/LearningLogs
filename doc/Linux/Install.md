@@ -2,35 +2,21 @@
 
 1、在主页点击创建新的虚拟机
 
-<img src="C:\Users\windows10\AppData\Roaming\Typora\typora-user-images\image-20241015121445213.png" alt="image-20241015121445213" style="zoom:33%;" />
-
 2、点击下一步
-
-<img src="C:\Users\windows10\Desktop\36cb8ad5d442f0f0cb539cf9d673587.png" alt="36cb8ad5d442f0f0cb539cf9d673587" style="zoom: 33%;" />
 
 3、选择准备好的IOS文件，点击下一步
 
-<img src="C:\Users\windows10\AppData\Roaming\Typora\typora-user-images\image-20241015121102572.png" alt="image-20241015121102572" style="zoom:33%;" />
-
 4、填写虚拟机名称，点击下一步
-
-<img src="C:\Users\windows10\AppData\Roaming\Typora\typora-user-images\image-20241015121244943.png" alt="image-20241015121244943" style="zoom:33%;" />
 
 5、修改最大磁盘大小，这里建议设置的大一点，否则将来不够用调整很麻烦，然后选择将虚拟磁盘存储为单个文件
 
-<img src="C:\Users\windows10\AppData\Roaming\Typora\typora-user-images\image-20241015121608864.png" alt="image-20241015121608864" style="zoom:33%;" />
-
 6、下一步后，自定义硬件
-
-<img src="C:\Users\windows10\AppData\Roaming\Typora\typora-user-images\image-20241015121654905.png" alt="image-20241015121654905" style="zoom:33%;" />
 
 7、设置虚拟机硬件，建议cpu给到4核，内存给到8G
 
-<img src="C:\Users\windows10\AppData\Roaming\Typora\typora-user-images\image-20241015121815314.png" alt="image-20241015121815314" style="zoom:33%;" />
-
 8、最后点击完成，虚拟机就创建完毕了
 
-<img src="C:\Users\windows10\AppData\Roaming\Typora\typora-user-images\image-20241015121908905.png" alt="image-20241015121908905" style="zoom:33%;" />
+
 
 # 安装CentOS7
 
