@@ -1,6 +1,6 @@
 # 《JavaScript语言精粹》读书笔记
 
-### 一、精华
+## 一、精华
 
 1、JavaScript建立在一些非常优秀的想法（函数、弱类型、动态对象和富有表现力的对象字面量表示法）和非常糟糕的想法（基于全局变量的编程模型）之上。
 
@@ -12,7 +12,7 @@
 
 5、JavaScript有一个无类型的对象系统，在这个系统中，对象可以直接从其他对象继承属性。。
 
-### 二、语法
+## 二、语法
 
 1、建议避免使用/**/注释，而用//注释代替它。
 
@@ -26,7 +26,7 @@
 
 6、没有代码块作用域，只有函数作用域；NaN == false；普通for循环和 for-in循环；如果一个函数没有指定返回表达式，那么返回值为undefined。
 
-### 三、对象
+## 三、对象
 
 1、对象是属性的容器。原型链是允许对象继承另一对象的属性，能够减少对象初始化的时间和内存消耗。
 
@@ -65,7 +65,7 @@ MYAPP.stooge = {
 }
 ```
 
-### 四、函数
+## 四、函数
 
 1、在JavaScript中，函数就是对象。对象是key－value对的集合，并拥有一个连到原型的对象的隐藏连接。
 
@@ -257,7 +257,7 @@ String.method('deentity', function () {
 调用：deentity（）；
 ```
 
-### 五、继承
+## 五、继承
 
 1、原型
 
@@ -283,7 +283,7 @@ var women = {
 var myWomen = Object.beget(women);
 ```
 
-### 六、数组
+## 六、数组
 
 1、JavaScript的数组允许混合类型。
 
@@ -314,3 +314,211 @@ item1, ..., itemX   可选。向数组添加的新项目。
 
 - 因为数组其实是对象，可以用for in来遍历。但是for in无法保证属性的顺序。
 - 还是用for循环好。
+
+## 七、方法
+
+## array
+
+### array.concat(item...)
+
+返回一个新数组,将items附加到数组尾。
+
+### array.join(separator)
+
+以separator链接数组的内容
+
+### array.pop()/array.push()
+
+让array像stack一样工作
+
+### array.reverse()
+
+反转array中的元素的顺序。返回当前array。
+
+### array.shift()
+
+移除并返回一个元素，但是逼pop()慢很多
+
+### array.slice(start,end)
+
+slice方法可以对array做一段浅复制
+
+### arrat.sort()
+
+默认比较时都是字符串，所以比较前都会转换成字符串。 可以自定义比较的回调函数: 如果第一个参数应该排列在前面，则返回一个负数，如果第二个参数应该排列在后面，则返回一个正数。相等则为0.
+
+```
+arr.sort(function(a, b) {
+    return a - b;
+})
+```
+
+### array.splice(start, count, item...)
+
+splice函数会从start位置开始移除count个元素，然后插入item。
+
+### array.unshift(item...)
+
+从array头部插入item，并返回array长度。
+
+## function.apply(this, args)
+
+可传入任意数组
+
+## Number
+
+### number.toExponential(digits)
+
+转换成指数形式的字符串。可选择digits个位的小数
+
+### number.toFixed(digits)
+
+转换成十进制数形式的字符串。可选择digits个位的小数
+
+### number.toPrecision(Predigits)
+
+转换成一个十进制形式的字符串。一共Predigits位数。
+
+### number.toString(radix)
+
+## Object
+
+### Object.hasOwnProperty()
+
+如果这个object包含了一个名为name，则返回true，原型链不会被检查。
+
+## String
+
+### String.charAt()
+
+### string.charCodeAt()
+
+类似charAt()但是返回ASCii码，超出长度范围则返回NaN
+
+### string.fromCharCode(codes...)
+
+从ascii码中返回一串字符串
+
+### string.concat()
+
+conct方法时链接字符串，然后返回新字符串。
+
+### string.indexof()
+
+### string.lastIndexOf()
+
+从尾部开始搜索。
+
+### string.localeCompare(that)
+
+比较两个字符串。如果比that小，返回负数，大则正数，相等则零。
+
+### string.match(regexp)
+
+### string.search(regexp)
+
+### string.replace(searchValue, replaceValue)
+
+- searchValue可以是字符串，但是这种情况下只会在第一个出现的位置被替换
+- searchValue也可以是正则表达式。
+- replaceValue可以是一个`函数`，也可以是字符串。
+
+### string.slice(start, end)
+
+start,end都可以是负数，会与string.length相加。
+
+### string.split(separator, limit)
+
+limit可选被分割的片段数。
+
+### string.substring(start, end)
+
+不能处理负数，其他与slice一样。
+
+### string.toUpperCase()/string.toLowerCase()
+
+## 八、糟粕
+
+### 全局变量
+
+JavaScript中如果不声明var的话会自动变成全局变量。
+
+### 作用域
+
+不提供块级作用域。
+
+### 自动插入分号
+
+JavaScript有一个机制，它试图通过自动插入分毫来修正有缺损的程序。
+
+```
+return
+{
+    status: true
+}
+会被认定为：
+return;
+{
+    status: true
+};
+这就是undefined了。
+```
+
+### 保留字
+
+很多没有使用的变量名都作为了保留字。但是很多在ES6使用了，所以没毛病。
+
+### Unicode
+
+### typeOf
+
+```
+typeof null -> object
+更好的方法：
+valur === null
+```
+
+### parseInt
+
+这个函数的缺点是，它虽然是把字符串转换为整数的，但是遇到非数字时会停止解释：
+
+```
+parseInt("16") 和 parseInt("16 tons") 是一样的。
+```
+
+它并不会提示出现了额外的文本。
+
+### 浮点数
+
+### NaN
+
+它表示不是一个数字。 但是：
+
+```
+typeof NaN === 'number' ---> true!!!
+```
+
+而且NaN还不是它自己！！！
+
+```
+NaN === NaN  //false
+```
+
+可以用`isNaN(value)`来判断。 最好判断是不是数字的方法是用isFinite()，它会筛选NaN和Infinity,但是它会把输入转换成一个数字，所以要先判断是不是number类型。
+
+```
+function isNumber(value) {
+    return typeof value === 'number' && isFinite(value);
+}
+```
+
+### 伪数组
+
+JavaScript中没有真正的数组。永远不会越界。 要判断一个对象是不是一个数组，要通过constructor中去判断。
+
+```
+if (value && typeof value === 'object' && value.constructor === Array) {
+
+}
+```
+
