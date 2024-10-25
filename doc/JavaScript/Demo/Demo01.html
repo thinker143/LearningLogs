@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>函数</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function bar(){
+				console.log("function1");
+				console.log(bar)
+			}
+			bar()	
+			function fun(){
+				console.log("funciton1");
+			}
+			var a=fun;
+			a(); //function1
+			var del=function (a,b){
+				return a-b;
+			}
+			console.log(del(9,3));//6
+			var mul=function multiplay(a,b){
+				console.log(a*b);
+				console.log(multiplay);
+			}
+			mul(3,3)//9
+			console.log(multiplay(2,3))//error multiplay is not defined
+		</script>
+	</body>
+</html>

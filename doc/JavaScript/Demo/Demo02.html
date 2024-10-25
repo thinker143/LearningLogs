@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//函数字面量
+			function add(a,b){
+				return a+b;
+			}
+			//调用
+			//(1)方法调用模式
+			var myObject={
+				value:0,
+				increment:function(inc){
+					this.value+=typeof inc==='number'?inc:1;
+				}
+			}
+			myObject.increment();
+			console.log(myObject.value); //1
+			myObject.increment(2);
+			console.log(myObject.value); //3
+			//(2)函数调用模式
+			var sum=add(3,4);
+			
+			myObject.double=function(){
+				var that=this;
+				var helper=function(){
+					that.value=add(that.value,that.value);
+				}
+				helper();
+			};
+			//方法调用模式
+			myObject.double();
+			console.log(myObject.value);//6
+			//(3)构造器调用模式
+			var Quo=function(string){
+				this.status=string;
+			}
+			Quo.prototype.get_status=function(){
+				return this.status;
+			}
+			var myQuo=new Quo("confused");
+			console.log(myQuo.get_status());//confused
+			//(4)Apply调用模式
+			var array=[3,4];
+			var sum=add.apply(null,array); //7
+			
+			var statusObject={
+				status:'A-OK'
+			};
+			var status=Quo.prototype.get_status.apply(statusObject);
+			console.log(status);//A-OK
+			//参数
+			var sum=function(){
+				var sum=0;
+				for(var i=0;i<arguments.length;i++){
+					sum+=arguments[i];
+				}
+				return sum;
+			}
+			console.log(sum(1,2,3));//6
+			//异常
+			var add=function(){
+				if(typeof a!=='number'||typeof b!=='number'){
+					throw {
+						name:"TypeError",
+						message:"add needs numbers"
+					}
+				}
+				return a+b;
+			}
+			var a;
+//			console.log(add(a,8)); //Uncaught {name: "TypeError", message: "add needs numbers"}
+			var try_it=function(){
+				try{
+					add(a,8);
+				}catch(e){
+//					e是{name: "TypeError", message: "add needs numbers"}
+					console.log(e.name+":"+e.message);
+				}
+			}
+			try_it(); //TypeError:add needs numbers
+			//扩充类型的功能
+			Function.prototype.method=function(name,func){
+				if(!this.prototype[name]){
+					this.prototype[name]=func;
+				}
+				return this;
+			}
+			
+			Number.method('integer',function(){
+				return Math[this<0?'ceil':'floor'](this);
+			})
+			console.log((-10/3).integer()); //-3
+			
+			String.method('trim',function(){
+				return this.replace(/^\s+|\s+$/g,'');
+			});
+			console.log('"'+"   neat   ".trim()+'"');//"neat"
+			
+		
+			//递归
+			function factorical(num){
+				if(num<1){
+					return 1;
+				}else{
+					return num*factorical(num-1);
+				}
+			}
+			console.log(factorical(3));//6
+			//闭包
+			var myObject1=(function(){
+				var value=0;
+				return {
+					increment:function(inc){
+						value+=typeof inc==='number'?inc:1;
+					},
+					getValue:function(){
+						return value;
+					}
+				};
+			}());
+			console.log(myObject1.increment(3));//  undefined
+			
+			var quo1=function(status){
+				return {
+					get_status:function(){
+						return status;
+					}
+				};
+			};
+			var myQuo1=quo1('amazed');
+			console.log(myQuo1.get_status());//amazed
+			
+			var fade=function(node){
+				var level=1;
+				var step=function(){
+					var hex=level.toString(16);
+					node.style.backgroundColor="#FFF"+hex+hex;
+					if(level<15){
+						level+=1;
+						setTimeout(step,100);
+					}
+				};
+				setTimeout(step,100);
+			}
+			fade(document.body); //毫无反应
+			var add_the_handlers=function(nodes){
+				for(var i=0;i<nodes.length;i++){
+					nodes[i].onclick=function(e){
+						alert(i);
+					}
+				}
+			}
+			var add_the_handlers=function(nodes){
+				var helper=function(i){
+					return function(e){
+						alert(i);
+					}
+				}
+				var i;
+				for(var i=0;i<nodes.length;i++){
+					nodes[i].onclick=helper(i);
+				}
+			}
+			//回调
+//			reuqest=prepare_the_request();
+//			response=send_request_synchronously(request);
+//			display(response);
+//			
+//			reuqest=prepare_the_request();
+//			send_request_synchronously(request,function(response){
+//				display(response);
+//			});
+			//
+		</script>
+	</body>
+</html>
