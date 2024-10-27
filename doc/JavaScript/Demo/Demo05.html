@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//Array
+			var a=[1,2,3];
+			var b=[4,5,6];
+			var c=a.concat(b);
+			console.log(a); //(3) [1, 2, 3]
+			console.log(b); //(3) [4, 5, 6]
+			console.log(c); //(6) [1, 2, 3, 4, 5, 6]
+			
+			var a=['a','b','c'];
+			a.push('d');
+			var c=a.join('');
+			console.log(a); //(4) ["a", "b", "c", "d"]
+			console.log(c); //'abcd'
+			
+			var a=['a','b','c'];
+			var c=a.pop();
+			console.log(a); //(2) ["a", "b"]
+			console.log(c); // c
+//			Array.method('pop',function(){
+//				return this.splice(this.length-1,1)[0];
+//			});
+			
+			var a=['a','b','c'];
+			var b=['x','y','z'];
+			var c=a.push(b,true);
+			console.log(a); //(5) ["a", "b", "c", ['x','y','z'] , true]
+			console.log(b); //(3) ["x", "y", "z"]
+			console.log(c);//5
+			
+			var a=['a','b','c'];
+			var b=a.reverse();
+			console.log(a); //(3) ["c", "b", "a"]
+			console.log(b); //(3) ["c", "b", "a"]
+			
+			var a=['a','b','c'];
+			var c=a.shift();
+			console.log(a); //(2) ["b", "c"]
+			console.log(c); //a
+			
+			var a=['a','b','c'];
+			var b=a.slice(0,1);
+			console.log(a); //(3) ["a", "b", "c"]
+			console.log(b); //["a"]
+			var c=a.slice(1); 
+			console.log(a); //(3) ["a", "b", "c"]
+			console.log(c); //(2) ["b", "c"]
+			
+			var n=[4,5,8,35,43];
+			n.sort();
+			console.log(n);//(5) [35, 4, 43, 5, 8]
+			
+			var a=['a','b','c'];
+			var r=a.splice(1,1,'ache','bug');
+			console.log(a); //(4) ["a", "ache", "bug", "c"]
+			console.log(r); //["b"]
+			
+			var a=['a','b','c'];
+			var r=a.unshift('?','$');
+			console.log(a); //(5) ["?", "$", "a", "b", "c"]
+			console.log(r); //5
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

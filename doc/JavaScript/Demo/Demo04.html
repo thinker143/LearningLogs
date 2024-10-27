@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//数组字面量
+			var numbers=['zero','one','two','three','four','five','six'];
+			var numbers_object={
+				'1':'one',
+				'2':'two',
+				'3':'three',
+				'4':'four',
+				'5':'five',
+				'6':'six'
+			};
+			console.log(numbers); //(7) ["zero", "one", "two", "three", "four", "five", "six", b: "b"]
+			console.log(numbers.indexOf('b'));  //-1
+			console.log(numbers_object);//{1: "one", 2: "two", 3: "three", 4: "four", 5: "five", 6: "six"}
+			console.log(numbers_object[1]); //one
+//			console.log(numbers_object.1); //error
+			//长度
+			var arr=[];
+			arr[10]='Mike';
+			console.log(arr);  //(11) [undefined × 10, "Mike"]
+			arr['12']='Lili'; 
+			console.log(arr);//(13) [undefined × 10, "Mike", undefined × 1, "Lili"]
+			arr['a']='a';
+			console.log(arr); //(13) [undefined × 10, "Mike", undefined × 1, "Lili", a: "a"]
+			arr.length=3;
+			console.log(arr);  //(3) [undefined × 3, a: "a"]
+			var new_numbers=['zero','one','two','three','four','five','six'];
+			new_numbers.length=3;
+			console.log(new_numbers); //(3)['zero','one','two']
+			//删除
+			var arr1=['zero','one','two','three','four','five'];
+			delete arr1[2];
+			console.log(arr1);//(6) ["zero", "one", undefined × 1, "three", "four", "five"]
+			arr1.splice(2,1);
+			console.log(arr1);//(5) ["zero", "one", "three", "four", "five"]
+			//枚举
+			for(var value in arr1){
+				console.log(arr1[value]);
+			}  //zero one three four five
+			for(var i=0;i<arr1.length;i++){
+				console.log(arr1[i]);
+			} //zero one three four five
+			//容易混淆的地方
+			var is_array=function(value){
+				return value&&typeof value=='object'&&value.constructor===Array;
+			}
+			var is_array1=function(value){
+				return Object.prototype.toString.apply(value)=='[Object Array]';
+			}
+			//方法
+			Array.prototype.reduce=function(f,value){
+				for(var i=0;i<this.length;i++){
+//					console.log(value)
+					value=f(this[i],value);
+					
+				}
+				return value;
+			}
+//			Array.method('reduce',function(f,value){
+//				var i;
+//				for(var i=0;i<this.length;i++){
+//					value=f(this[i],value);
+//				}
+//				return value;
+//			});
+			function add(a,b){
+				return a+b;
+			}
+			var data=[1,2,3];
+			console.log(data.reduce(add,0)); //6
+			data.total=function(){
+				return this.reduce(add,0);
+			}
+			console.log(data.total());//6
+			//指定初始值
+			Array.dim=function(dimension,initial){
+				var a=[];
+				for(var i=0;i<dimension;i++){
+					a[i]=initial;
+				}
+				return a;
+			}
+			var myArr=Array.dim(10,0);
+			console.log(myArr);  //(10) [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+			var mytrix=[
+				[0,1,2],
+				[3,4,5],
+				[6,7,8]
+			];
+			console.log(mytrix[2][1])//7
+			for(var i=0;i<10;i++){
+				var my_array=new Array();
+				my_array[i]=[];
+			}
+			Array.matrix=function(m,n,initial){
+				var a,mat=[];
+				for(var i=0;i<m;i++){
+					a=[];
+					for(var j=0;j<n;j++){
+						a[j]=initial;
+					}
+					mat[i]=a;
+				}
+				return mat;
+			}
+			var myMatrix=Array.matrix(4,4,0);
+			console.log(myMatrix[3][3])//0
+			
+			Array.identity=function(n){
+				var mat=Array.matrix(n,n,0);
+				for(var i=0;i<n;i++){
+					mat[i][i]=n;
+				}
+				return mat;
+			}
+			
+			myMatrix=Array.identity(4);
+			console.log(myMatrix[3][3]);//4
+				
+			
+		</script>
+	</body>
+</html>

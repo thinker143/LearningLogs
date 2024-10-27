@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//对象字面量
+			var obj={
+				"first-name":"Mike"
+			}
+//			var obj1={
+//				first-name:"Mike"
+//			} //error
+			console.log(obj["first-name"]); //Mike
+//			console.log(obj[first-name])//error
+			var obj={
+				["first-name"]:"Mike"
+//				[first-name]:"Nike"  //error
+			}
+			//检索
+			var flight={
+				arrival:{
+					time:"2001-01-23"
+				}
+			}
+			console.log(flight.equipment); //undefined
+//			console.log(flight.equipment.name); //error
+			console.log(flight.equipment&&flight.equipment.name);  //undefined
+			//引用
+			var x=obj;
+			x["first-name"]="Lili";
+			console.log(obj["first-name"]);//Lili
+			//删除
+			obj.name="Lili";
+			Object.prototype.name="Mike";
+			delete obj.name;
+			console.log(obj.name);//Mike
+			//原型
+			var obj1={
+				"name":"Mike",
+				"age":12,
+				"sex":"female"
+			}
+			if(typeof Object.beget!=='function'){
+				Object.create=function(o){
+					var F=function(){};
+					F.prototype=o;
+					return new F();
+				}
+			}
+			var obj2=Object.create(obj1);
+			obj2.name="Lili";
+			delete obj2.name;
+			console.log(obj2.name); //Mike
+		
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,31 @@
+!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			Function.prototype.method=function(name,func){
+				if(!this.prototype[name]){
+					this.prototype[name]=func;
+				}
+				return this;
+			}
+			
+			Function.method('bind',function(that){
+				var method=this,
+					args=slice.apply(arguments,[1]);
+				return function(){
+					return method.apply(that,args.concat(slice.apply(arguments,[0])));
+				};
+			});
+			
+			var x=function(){
+				return this.value;
+			}.bind({value:666});
+			
+			console.log(x());//666
+		</script>
+	</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var name='Curly';
+			var initial=name.charAt(0);
+			console.log(name); //Curly
+			console.log(initial); //C
+			
+			var name="Curly";
+			var initial=name.charCodeAt(0);//
+			console.log(name); //Curly
+			console.log(initial); //67
+			
+			var s='C'.concat('a','t');
+			console.log(s);//Cat
+			
+			var test="Mississippi";
+			console.log(test.indexOf('ss'));//2
+			console.log(test.indexOf('ss',3));//5
+			console.log(test.indexOf('ss',6));//-1
+			console.log(test); //Mississippi
+			console.log(test.lastIndexOf('ss'));//5
+			console.log(test.lastIndexOf('ss',3));//2
+			console.log(test.lastIndexOf('ss',6));//5
+			
+			var text='<html><body bgcolor=linen><p>'+'This is <b>bold<\/b>!<\/p><\/body><\/html>';
+			var tags=/[^<>]+|<(\/?)([A-Za-z]+)([^<>]*)>/g;
+			var a , i;
+			a=text.match(tags);
+			for(i=0;i<a.length;i++){
+				document.writeln(('//['+i+']'+a[i]));
+			}
+			
+//		打印出	//[0] //[1] //[2]
+//			//[3]This is //[4] //[5]bold //[6] //[7]! //[8]
+//			
+//			//[9] //[10]
+			
+			var text='and in it "Any dam ik';
+			var pos=text.search(/["']/);
+			console.log(pos); //10
+			
+			var text='and in it "Any dam ik';
+			var a=text.slice(12);
+			console.log(text); //and in it "Any dam ik
+			console.log(a); //ny dam ik
+			console.log(text.slice(0,3));//and
+			console.log(text.slice(-2));// ik  text.slice(-2)==text.slice(-2+text.length)
+			
+			var result="mother_in_law".replace('_','-');
+			console.log(result);//mother-in_law
+			
+			var digits='0123456789';
+			var a=digits.split('',5);
+			console.log(a);//(5) ["0", "1", "2", "3", "4"]
+			console.log("123.6.54".split('.'));//(3) ["123", "6", "54"]
+			
+			var a=String.fromCharCode(67,97,116);
+			console.log(a);//Cat
+			
+		</script>
+	</body>
+</html>
